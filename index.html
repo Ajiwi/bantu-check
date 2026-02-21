@@ -42,6 +42,10 @@
         ::-webkit-scrollbar-track { background: var(--rb-black); }
         ::-webkit-scrollbar-thumb { background: var(--rb-red); }
 
+        /* Hide Scrollbar for Nav Menu on Mobile */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
         /* Typography */
         .hero-title {
             letter-spacing: -0.05em;
@@ -78,7 +82,7 @@
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(2, 1fr);
             gap: 10px;
-            opacity: 0.2; /* Transparansi agar kolase tidak ganggu teks */
+            opacity: 0.2;
             z-index: 0;
             padding: 10px;
         }
@@ -161,7 +165,7 @@
             100% { transform: translateX(100%) rotate(45deg); }
         }
 
-        /* Content Wrapper for Perfect Alignment */
+        /* Content Wrapper */
         .content-wrapper {
             width: 100%;
             max-width: 1280px; 
@@ -206,19 +210,22 @@
     <div class="noise"></div>
 
     <!-- Navigasi -->
-    <nav class="fixed w-full z-50 px-0 py-6 transition-all duration-300" id="nav">
+    <nav class="fixed w-full z-50 px-0 py-4 md:py-6 transition-all duration-300" id="nav">
         <div class="content-wrapper">
-            <div class="flex justify-between items-center bg-white/5 backdrop-blur-md px-6 md:px-10 py-4 rounded-full border border-white/5 shadow-2xl">
-                <div class="text-base font-extrabold tracking-tighter uppercase cursor-pointer">
+            <div class="flex flex-col md:flex-row justify-between items-center bg-white/5 backdrop-blur-md px-4 md:px-10 py-3 md:py-4 rounded-full border border-white/5 shadow-2xl gap-3 md:gap-0">
+                <div class="text-xs md:text-base font-extrabold tracking-tighter uppercase cursor-pointer">
                     TANAYA AJI WIDIGDO<span class="text-[var(--rb-red)]">.</span>
                 </div>
-                <div class="hidden md:flex gap-10 text-[9px] font-bold uppercase tracking-[0.4em] text-white/40">
-                    <a href="#home" class="hover:text-white transition">Home</a>
-                    <a href="#about" class="hover:text-white transition">Identity</a>
-                    <a href="#skills" class="hover:text-white transition">Skill</a>
-                    <a href="#contact" class="hover:text-white transition">Contact</a>
+                
+                <!-- Menu Scrollable di Mobile -->
+                <div class="flex overflow-x-auto no-scrollbar gap-6 md:gap-10 text-[10px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-white/40 w-full md:w-auto justify-start md:justify-center px-4 md:px-0 whitespace-nowrap">
+                    <a href="#home" class="nav-link hover:text-white transition">Home</a>
+                    <a href="#about" class="nav-link hover:text-white transition">Identity</a>
+                    <a href="#skills" class="nav-link hover:text-white transition">Skill</a>
+                    <a href="#contact" class="nav-link hover:text-white transition">Contact</a>
                 </div>
-                <a href="#contact" class="hidden sm:block text-[9px] font-black uppercase tracking-[0.5em] text-red-500 hover:text-white transition interactive">
+                
+                <a href="#contact" class="hidden md:block text-[9px] font-black uppercase tracking-[0.5em] text-red-500 hover:text-white transition interactive">
                     Consultation
                 </a>
             </div>
@@ -264,12 +271,11 @@
                     </div>
                 </div>
 
-                <!-- Foto Utama di Kanan (Adaptive) -->
-                <div class="w-full md:w-2/5 flex justify-end reveal">
+                <!-- Foto Utama di Kanan (Adaptive - Hidden on Mobile) -->
+                <div class="hidden md:flex md:w-2/5 justify-end reveal">
                     <div class="hero-photo-wrap tilt-target">
                         <div class="hero-photo-mask">
-                            <!-- Foto utama lu ji pria mahal -->
-                            <img src="aji 2.jpeg" 
+                           <img src="aji 2.jpeg" 
                                  alt="Tanaya Aji Widigdo" id="hero-img">
                             <div class="absolute bottom-6 right-6 w-12 h-12 border-b-2 border-r-2 border-[var(--rb-red)]"></div>
                             <div class="absolute top-6 left-6 w-12 h-12 border-t-2 border-l-2 border-white/20"></div>
@@ -305,17 +311,17 @@
 
                     <div class="space-y-8">
                         <div class="space-y-4">
- <!-- Diperbarui: Pemisahan nama dan tagline hukum agar tidak dempet -->
                             <h2 class="text-3xl lg:text-4xl font-extrabold uppercase italic tracking-tighter leading-none">
                                 Tanaya Aji Widigdo
                             </h2>
                             <p class="text-[var(--rb-red)] text-xl lg:text-2xl font-black italic mt-4 mb-6">
-                                HUKUM ADA UNTUK DITEGAKAN
+                                -INDEX ANIMI SERMO-
                             </p>
+                            
                             <p class="text-gray-400 text-sm lg:text-base leading-relaxed font-light text-justify">
                                 Halo, saya Tanaya Aji Widigdo bisa dipanggil Aji, mahasiswa hukum tingkat akhir di Universitas Diponegoro dengan konsentrasi pada bidang hukum Tata Negera. Saya memiliki ketertarikan mendalam pada sistem hukum publik dan penegakan hukum di Indonesia. Saat ini, saya fokus mendalami riset mengenai sistem pemilu legislatif dan aktif berkontribusi dalam penguatan ekosistem hukum melalui kegiatan Moot Court (Peradilan Semu). Saya berdedikasi untuk membangun karier sebagai penegak hukum yang berintegritas dan progresif.
                             </p>
-                            <p class="text-gray-500 text-xs lg:text-sm italic font-light border-l-2 border-[var(--rb-red)] pl-6">
+                            <p class="text-gray-500 text-xs lg:text-sm italic font-light border-l-2 border-[var(--rb-red)] pl-6 mt-6">
                                 "Hukum ada untuk Manusia. Bukan Manusia ada untuk Hukum -Prof. Satjipto R. S.H."
                             </p>
                         </div>
@@ -334,15 +340,14 @@
             <div class="section-container p-8 md:p-12 lg:p-16 reveal tilt-target">
                 <div class="mb-16">
                     <h2 class="text-5xl lg:text-7xl font-extrabold uppercase italic tracking-tighter opacity-10 leading-none">Skill.</h2>
-                    <p class="text-[10px] font-bold uppercase tracking-[0.6em] text-[var(--rb-red)] -mt-6 ml-2">Spesialisasi Hukum</p>
+                    <p class="text-[12px] font-bold uppercase tracking-[0.6em] text-[var(--rb-red)] -mt-6 ml-2">Spesialisasi Hukum</p>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-12" id="skills-container">
-                    <!-- Updated Skill Levels -->
                     <div class="space-y-4 group">
                         <div class="flex justify-between items-end">
                             <div class="space-y-0.5">
-                                <span class="text-[8px] font-bold uppercase tracking-widest text-red-600">Criminal Law</span>
+                                <span class="text-12px] font-bold uppercase tracking-widest text-red-600">Criminal Law</span>
                                 <h3 class="text-sm font-bold uppercase tracking-tight">Legal Analytics</h3>
                             </div>
                             <span class="text-base font-bold text-white/20 group-hover:text-[var(--rb-red)] transition">50%</span>
@@ -352,7 +357,7 @@
                     <div class="space-y-4 group">
                         <div class="flex justify-between items-end">
                             <div class="space-y-0.5">
-                                <span class="text-[8px] font-bold uppercase tracking-widest text-red-600">Corporate</span>
+                                <span class="text-[12px] font-bold uppercase tracking-widest text-red-600">Corporate</span>
                                 <h3 class="text-sm font-bold uppercase tracking-tight">Contract Architecture</h3>
                             </div>
                             <span class="text-base font-bold text-white/20 group-hover:text-[var(--rb-red)] transition">55%</span>
@@ -362,7 +367,7 @@
                     <div class="space-y-4 group">
                         <div class="flex justify-between items-end">
                             <div class="space-y-0.5">
-                                <span class="text-[8px] font-bold uppercase tracking-widest text-red-600">Litigation</span>
+                                <span class="text-[12px] font-bold uppercase tracking-widest text-red-600">Litigation</span>
                                 <h3 class="text-sm font-bold uppercase tracking-tight">Public Advocacy</h3>
                             </div>
                             <span class="text-base font-bold text-white/20 group-hover:text-[var(--rb-red)] transition">45%</span>
@@ -372,7 +377,7 @@
                     <div class="space-y-4 group">
                         <div class="flex justify-between items-end">
                             <div class="space-y-0.5">
-                                <span class="text-[8px] font-bold uppercase tracking-widest text-red-600">Goverment</span>
+                                <span class="text-[12px] font-bold uppercase tracking-widest text-red-600">Goverment</span>
                                 <h3 class="text-sm font-bold uppercase tracking-tight">Legal Drafting</h3>
                             </div>
                             <span class="text-base font-bold text-white/20 group-hover:text-[var(--rb-red)] transition">40%</span>
@@ -410,7 +415,6 @@
                         </div>
                     </div>
                     <div class="md:col-span-8">
-                        <!-- Updated Formspree ID -->
                         <form action="https://formspree.io/f/mlekkpbl" method="POST" class="space-y-10 bg-white/5 p-8 md:p-12 rounded-[24px] border border-white/5 shadow-2xl">
                             <div class="grid md:grid-cols-2 gap-10">
                                 <div class="space-y-2 border-b border-white/10 focus-within:border-[var(--rb-red)] transition-all">
@@ -437,10 +441,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-white/5">
-        <div class="content-wrapper text-center">
-            <p class="text-[10px] font-bold uppercase tracking-[1.5em] text-white/10 tracking-widest uppercase">Tanaya Aji Widigdo • Integritas • 2026</p>
-        </div>
+    <footer class="py-12 border-t border-white/5 text-center">
+        <p class="text-[10px] font-bold uppercase tracking-[1.5em] text-white/10 tracking-widest uppercase">BijixerStudios•2026</p>
     </footer>
 
     <script>
@@ -476,7 +478,9 @@
                 const y = e.clientY - rect.top - rect.height / 2;
                 gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.3 });
             });
-            btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" }));
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
+            });
         });
 
         // Typed.js
@@ -516,21 +520,13 @@
             }
         });
 
-        // Interaction Blobs
-        document.addEventListener('mousemove', (e) => {
-            const xPos = (e.clientX / window.innerWidth - 0.5);
-            const yPos = (e.clientY / window.innerHeight - 0.5);
-            gsap.to("#blob-1", { x: xPos * 60, y: yPos * 60, duration: 2 });
-            gsap.to("#blob-2", { x: xPos * -50, y: yPos * -50, duration: 2 });
-        });
-
-        // Navbar Scroll
+        // Navbar Scroll Styling
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('nav');
             if (window.pageYOffset > 50) {
-                nav.classList.add('py-2'); nav.classList.remove('py-6');
+                nav.classList.add('py-2'); nav.classList.remove('py-4');
             } else {
-                nav.classList.add('py-6'); nav.classList.remove('py-2');
+                nav.classList.add('py-4'); nav.classList.remove('py-2');
             }
         });
     </script>
